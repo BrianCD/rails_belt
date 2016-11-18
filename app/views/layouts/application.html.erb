@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BeltExam</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% if flash[:notice] %>
+  <%= flash[:notice][0] %>
+  <ul>
+     <% flash[:notice][1,flash[:notice].length].each do |message| %>
+       <li><%= message %></li>
+     <% end %>
+  </ul>
+  <% end %>
+  <% if flash[:alert] %>
+   <div class="notice">
+     <%= flash[:alert][0] %>
+     <ul>
+        <% flash[:alert][1,flash[:alert].length].each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+     </ul>
+   </div>
+  <% end %>
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      div{
+        width: 500px;
+        display: inline-block;
+        vertical-align: top
+      }
+    </style>
+  </head>
+  <body>
+    <div class="lender">
+      <h1>Lender</h1>
+      <form class="" action="lender" method="post">
+        <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+        First Name: <input type="text" name="user[first_name]" value="">
+        <br>
+        Last Name: <input type="text" name="user[last_name]" value="">
+        <br>
+        Email: <input type="text" name="user[email]" value="">
+        <br>
+        Password: <input type="text" name="user[password]" value="">
+        <br>
+        Confirm Password: <input type="text" name="user[password_confirmation]" value="">
+        <br>
+        Money: <input type="number" name="user[money]" value="">
+        <br>
+        <a href="/login">Already a member?</a> <input type="submit" name="" value="register">
+      </form>
+    </div>
+    <div class="borrower">
+      <h1>Borrower</h1>
+      <form class="" action="borrower" method="post">
+        <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+        First Name: <input type="text" name="user[first_name]" value="">
+        <br>
+        Last Name: <input type="text" name="user[last_name]" value="">
+        <br>
+        Email: <input type="text" name="user[email]" value="">
+        <br>
+        Password: <input type="text" name="user[password]" value="">
+        <br>
+        Confirm Password: <input type="text" name="user[password_confirmation]" value="">
+        <br>
+        Need Money For: <input type="text" name="user[purpose]" value="">
+        <br>
+        Description: <textarea name="user[description]" rows="8" cols="40"></textarea>
+        <br>
+        Amount Needed: <input type="number" name="user[goal]" value="">
+        <br>
+        <a href="/login">Already a member?</a> <input type="submit" name="" value="register">
+      </form>
+    </div>
+  </body>
+</html>

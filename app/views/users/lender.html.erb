@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="/logout">Log Out</a>
+    <br>
+    Name: <%=@user.first_name%> <%=@user.last_name%>
+    <br>
+    Account Balance: <%=@user.money%>
+    <h1>List of people in need of help:</h1>
+    <table>
+      <thead>
+        <th>
+          Name
+        </th>
+        <th>
+          Need Money For
+        </th>
+        <th>
+          Reason for loan
+        </th>
+        <th>
+          Amount Needed
+        </th>
+        <th>
+          Amount Raised
+        </th>
+        <th>
+          Action
+        </th>
+      </thead>
+      <tbody>
+        <% @borrowers.each do |borrower| %>
+          <tr>
+            <td>
+              <%=borrower.first_name%> <%=borrower.last_name%>
+            </td>
+            <td>
+              <%=borrower.purpose%>
+            </td>
+            <td>
+              <%=borrower.description%>
+            </td>
+            <td>
+              $<%=borrower.goal%>
+            </td>
+            <td>
+              $<%=borrower.get_raised%>
+            </td>
+            <td>
+              <form class="" action="." method="post">
+                <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+                $<input type="number" name="amount" value="">
+                <input type="hidden" name="borrower" value="<%=borrower.id%>">
+                <input type="submit" name="" value="Lend">
+              </form>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <h1>List of people you have lent to:</h1>
+    <table>
+      <thead>
+        <th>
+          Name
+        </th>
+        <th>
+          Need Money For
+        </th>
+        <th>
+          Reason for loan
+        </th>
+        <th>
+          Amount Needed
+        </th>
+        <th>
+          Amount Raised
+        </th>
+        <th>
+          Amount Lent
+        </th>
+      </thead>
+      <tbody>
+        <% @user.histories.each do |history| %>
+          <tr>
+            <td>
+              <%=history.borrower.first_name%> <%=history.borrower.last_name%>
+            </td>
+            <td>
+              <%=history.borrower.purpose%>
+            </td>
+            <td>
+              <%=history.borrower.description%>
+            </td>
+            <td>
+              $<%=history.borrower.goal%>
+            </td>
+            <td>
+              $<%=history.borrower.get_raised%>
+            </td>
+            <td>
+              $<%=history.amount%>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </body>
+</html>
